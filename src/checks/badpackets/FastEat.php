@@ -33,7 +33,7 @@ namespace ReinfyTeam\Zuri\checks\badpackets;
 
 use pocketmine\event\Event;
 use pocketmine\event\player\PlayerItemConsumeEvent;
-use pocketmine\item\ConsumableItem;
+use pocketmine\item\Food;
 use pocketmine\network\mcpe\protocol\ActorEventPacket;
 use pocketmine\network\mcpe\protocol\DataPacket;
 use pocketmine\network\mcpe\protocol\types\ActorEvent;
@@ -72,7 +72,7 @@ class FastEat extends Check {
      */
     public function checkEvent(Event $event, PlayerAPI $playerAPI) : void {
 		if ($event instanceof PlayerItemConsumeEvent) {
-			if ($event->getItem() instanceof ConsumableItem) {
+			if ($event->getItem() instanceof Food) {
 				$lastTick = $playerAPI->getExternalData("lastTickP");
 				if ($lastTick !== null) {
 					$diff = microtime(true) - $lastTick;
